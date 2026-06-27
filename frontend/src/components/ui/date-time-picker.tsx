@@ -91,8 +91,7 @@ export function DateTimePicker({ date, setDate, label }: DateTimePickerProps) {
             mode="single"
             selected={date}
             onSelect={handleDateSelect}
-            initialFocus
-            className="rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-3"
+            className="rounded-md border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 p-2"
           />
           <div className="flex items-center gap-3 mt-4 px-3 pb-2 pt-4 border-t border-slate-100 dark:border-slate-800">
             <Clock className="h-5 w-5 text-slate-500" />

@@ -9,8 +9,9 @@ import { fetchApi } from "@/lib/api"
 import Link from "next/link"
 import { toast } from "sonner"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
+import { Suspense } from "react"
 
-export default function RegisterPage() {
+function RegisterForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { t } = useLanguage()
@@ -118,5 +119,13 @@ export default function RegisterPage() {
         </CardFooter>
       </Card>
     </div>
+  )
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div className="flex h-[calc(100vh-5rem)] items-center justify-center p-6 text-slate-500">Loading...</div>}>
+      <RegisterForm />
+    </Suspense>
   )
 }
