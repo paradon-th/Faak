@@ -1,0 +1,41 @@
+name: Faak CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: dotnet restore Faak.sln
+    - name: Build
+      run: dotnet build Faak.sln --no-restore
+    # - name: Test
+    #   run: dotnet test Faak.sln --no-build --verbosity normal
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: npm install
+    - name: Build Next.js
+      working-directory: ./frontend
+      run: npm run build
+    # - name: Run Playwright tests
+    #   working-directory: ./frontend
+    #   run: npx playwright test
