@@ -78,7 +78,13 @@
     "bags": "สัมภาระ:",
     "small": "เล็ก",
     "large": "ใหญ่",
-    "loading": "กำลังโหลด..."
+    "loading": "กำลังโหลด...",
+    "viewQrCode": "ดู QR Code สำหรับเช็คอิน",
+    "qrCodeDesc": "กรุณาแสดง QR Code นี้ให้พนักงานที่ร้านเพื่อเช็คอิน",
+    "total": "รวมเป็นเงิน:",
+    "payNow": "ชำระเงิน",
+    "simulatePayment": "จำลองการจ่ายเงิน",
+    "cancel": "ยกเลิก"
   },
   "partner": {
     "dashboardTitle": "ภาพรวมธุรกิจ (Partner Dashboard)",
@@ -106,6 +112,12 @@
     "locLat": "ละติจูด",
     "locLng": "ลองจิจูด",
     "saveBtn": "บันทึกข้อมูล",
-    "addSuccess": "เพิ่มสถานที่สำเร็จ!"
+    "addSuccess": "เพิ่มสถานที่สำเร็จ!",
+    "searchQrCode": "ค้นหาการจอง / สแกน QR Code",
+    "searchQrCodePlaceholder": "พิมพ์รหัสการจอง หรือ QR Code (เช่น FAAK-xxxx)",
+    "searchBtn": "ค้นหา",
+    "scanCheckIn": "รับกระเป๋าเข้าฝาก",
+    "scanCompleted": "ลูกค้ารับคืนแล้ว",
+    "scanNotFound": "ไม่พบข้อมูลการจอง"
   }
 }

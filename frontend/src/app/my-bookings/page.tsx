@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 import ProtectedRoute from "@/components/ProtectedRoute"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
+import { QRCodeSVG } from "qrcode.react"
 
 export default function MyBookingsPage() {
   const [bookings, setBookings] = useState<any[]>([])
@@ -81,7 +82,7 @@ export default function MyBookingsPage() {
                     <p>{t('myBookings.small')} {booking.smallBags} | {t('myBookings.large')} {booking.largeBags}</p>
                   </div>
                   <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center font-medium">
-                    <span>Total:</span>
+                    <span>{t('myBookings.total')}</span>
                     <span className="text-lg text-blue-600">฿{booking.totalPrice}</span>
                   </div>
                   
@@ -90,12 +91,12 @@ export default function MyBookingsPage() {
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-md">
-                            Pay Now
+                            {t('myBookings.payNow')}
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
                           <DialogHeader>
-                            <DialogTitle>Scan QR Code</DialogTitle>
+                            <DialogTitle>{t('myBookings.payNow')}</DialogTitle>
                             <DialogDescription>
                               Scan this code using your banking app
                             </DialogDescription>
@@ -105,22 +106,60 @@ export default function MyBookingsPage() {
                             <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center justify-center h-48 w-48 text-slate-300">
                               <QrCode className="h-32 w-32 mb-2 text-slate-800" />
                             </div>
-                            <p className="text-lg font-bold text-blue-600">Total: ฿{booking.totalPrice}</p>
+                            <p className="text-lg font-bold text-blue-600">{t('myBookings.total')} ฿{booking.totalPrice}</p>
                           </div>
                           
                           <DialogFooter>
                             <DialogTrigger asChild>
-                              <Button variant="outline" className="rounded-xl">Cancel</Button>
+                              <Button variant="outline" className="rounded-xl">{t('myBookings.cancel')}</Button>
                             </DialogTrigger>
                             <DialogTrigger asChild>
                               <Button 
                                 onClick={() => handlePayment(booking.id)} 
                                 className="bg-green-600 hover:bg-green-700 text-white rounded-xl"
                               >
-                                Simulate Payment
+                                {t('myBookings.simulatePayment')}
                               </Button>
                             </DialogTrigger>
                           </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  )}
+
+                  {(booking.status === "Paid" || booking.status === "CheckedIn") && (
+                    <div className="pt-2">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 text-white rounded-xl shadow-md">
+                            <QrCode className="mr-2 h-4 w-4" />
+                            {t('myBookings.viewQrCode')}
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-md">
+                          <DialogHeader>
+                            <DialogTitle className="text-center">{t('myBookings.viewQrCode')}</DialogTitle>
+                            <DialogDescription className="text-center">
+                              {t('myBookings.qrCodeDesc')}
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="flex flex-col items-center justify-center p-6 space-y-6">
+                            <div className="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex items-center justify-center">
+                              <QRCodeSVG 
+                                value={booking.qrCodeData} 
+                                size={200}
+                                bgColor={"#ffffff"}
+                                fgColor={"#0f172a"}
+                                level={"H"}
+                              />
+                            </div>
+                            <div className="text-center space-y-1">
+                              <p className="text-sm text-slate-500 font-medium">BOOKING ID</p>
+                              <p className="font-mono text-xl font-bold tracking-wider text-slate-900 dark:text-white">
+                                {booking.qrCodeData}
+                              </p>
+                            </div>
+                          </div>
                         </DialogContent>
                       </Dialog>
                     </div>

@@ -78,7 +78,13 @@
     "bags": "Bags:",
     "small": "Small",
     "large": "Large",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "viewQrCode": "View Check-in QR Code",
+    "qrCodeDesc": "Please show this QR Code to the staff for check-in.",
+    "total": "Total:",
+    "payNow": "Pay Now",
+    "simulatePayment": "Simulate Payment",
+    "cancel": "Cancel"
   },
   "partner": {
     "dashboardTitle": "Partner Dashboard",
@@ -106,6 +112,12 @@
     "locLat": "Latitude",
     "locLng": "Longitude",
     "saveBtn": "Save Location",
-    "addSuccess": "Location added successfully!"
+    "addSuccess": "Location added successfully!",
+    "searchQrCode": "Search Booking / Scan QR Code",
+    "searchQrCodePlaceholder": "Enter Booking ID or QR Code (e.g., FAAK-xxxx)",
+    "searchBtn": "Search",
+    "scanCheckIn": "Check In Luggage",
+    "scanCompleted": "Luggage Returned",
+    "scanNotFound": "Booking not found"
   }
 }
